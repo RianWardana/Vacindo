@@ -1,0 +1,54 @@
+<dom-module id="page-home">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+            }
+
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+
+            paper-card {
+                --paper-card-header-color: #fff;
+                margin: 20px;
+            }
+        </style>
+
+        <paper-card image="./img/rinjani.jpg" heading="Mount Rinjani">
+            <div class="card-content">
+                The mighty Rinjani mountain of Gunung Rinjani is a massive volcano which towers over the island of Lombok. 
+                At 3,726 meters tall, Gunung Rinjani is the second highest mountain in Indonesia.
+            </div>
+            <div class="card-actions">
+                <paper-button>Save</paper-button>
+                <paper-button>Explore</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card image="./img/arborek.jpg" heading="Arborek Tourism Village">
+            <div class="card-content">
+                The village of Arborek is fast rising as a pioneer among the 18 beautiful villages in West Papua that have embarked on 
+                developing local regulations for community-based marine conservation.
+            </div>
+            <div class="card-actions">
+                <paper-button>Save</paper-button>
+                <paper-button>Explore</paper-button>
+            </div>
+        </paper-card>
+
+        
+    </template>
+
+    <script>
+        Polymer({
+            is: 'page-home',
+            properties: {
+            },
+
+            ready: function() {   
+            }
+        });
+    </script>
+</dom-module>
