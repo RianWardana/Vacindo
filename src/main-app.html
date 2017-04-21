@@ -10,6 +10,7 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 
@@ -53,9 +54,12 @@
 
         <app-drawer-layout>
             <app-drawer>
+                <iron-image style="width:256px; height:225px;" sizing="cover" src="../img/drawer.png"></iron-image>
                 <iron-selector attr-for-selected="judul" selected="{{halamanSekarang}}" on-iron-select="onMenuSelect" class="drawer-list" role="navigation">
-                    <paper-item judul="Places">Places</paper-item>
-                    <paper-item judul="Saved Places">Saved Places</paper-item>
+                    <paper-item judul="Places"><iron-icon icon="room"></iron-icon>Places</paper-item>
+                    <paper-item judul="Saved Places"><iron-icon icon="grade"></iron-icon>Saved Places</paper-item>
+                    <paper-item judul="My Plans"><iron-icon icon="flight-takeoff"></iron-icon>My Plans</paper-item>
+                    <paper-item judul="Logout"><iron-icon icon="exit-to-app"></iron-icon>Log out</paper-item>
                 </iron-selector>
             </app-drawer>
             <app-header-layout>
