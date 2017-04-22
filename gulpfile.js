@@ -29,6 +29,11 @@ gulp.task('cloneImages', function() {
 // 	.pipe(gulp.dest('apk'))
 // });
 
+gulp.task('cloneManifest', function() {
+	return gulp.src('manifest.json')
+		.pipe(gulp.dest('../cordova/www'))
+});
+
 gulp.task('watch', function() {
 	gulp.watch('bower_components/**/*.*', ['build']);
 	gulp.watch('src/*.*', ['build']);
@@ -38,6 +43,7 @@ gulp.task('watch', function() {
 	gulp.watch('img/*.*', ['cloneImages']);
 	// gulp.watch('../cordova/config.xml', ['cloneCordova']);
 	// gulp.watch('../cordova/platforms/android/build/outputs/apk/android-debug.apk', ['cloneAPK']);
+	gulp.watch('manifest.json', ['cloneManifest']);
 });
 
-gulp.task('default', ['build', 'cloneImages', 'watch']);
+gulp.task('default', ['build', 'cloneImages', 'cloneManifest','watch']);

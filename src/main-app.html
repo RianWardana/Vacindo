@@ -1,59 +1,25 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/iron-image/iron-image.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../bower_components/paper-styles/paper-styles-classes.html">
-
-<link rel="import" href="page-home.html">
-<link rel="import" href="saved-places.html">
-
-
-
 <dom-module id="main-app">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :root {
                 display: block;
-                --app-primary-color: #2980b9; /*500*/
+                --app-primary-color: #377bb7;
                 --app-secondary-color: #000;
+                 --paper-icon-button-ink-color: white;
                 --paper-card-header-image-text: {
                     text-shadow: 2px 2px 5px #000;
                 };
             }
 
-            app-header {
-                background-color: var(--app-primary-color);
-                color: #fff;
-            }
-
-            app-header paper-icon-button {
-                --paper-icon-button-ink-color: white;
-            }
-
             iron-icon {
-                margin-right: 12px;
+                margin-right: 15px;
             }
         </style>
 
+
+
         <app-drawer-layout>
-            <app-drawer>
+            <app-drawer id="appDrawer">
                 <iron-image style="width:256px; height:225px;" sizing="cover" src="../img/drawer.png"></iron-image>
                 <iron-selector attr-for-selected="judul" selected="{{halamanSekarang}}" on-iron-select="onMenuSelect" class="drawer-list" role="navigation">
                     <paper-item judul="Places"><iron-icon icon="room"></iron-icon>Places</paper-item>
@@ -62,21 +28,15 @@
                     <paper-item judul="Logout"><iron-icon icon="exit-to-app"></iron-icon>Log out</paper-item>
                 </iron-selector>
             </app-drawer>
-            <app-header-layout>
-                <app-header fixed effects="waterfall">
-                    <app-toolbar>
-                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div title style="margin-left: 10px;">{{halamanSekarang}}</div>
-                    </app-toolbar>
-                </app-header>
-                <iron-pages attr-for-selected="judul" selected="{{halamanSekarang}}" role="main">
-                    <page-home judul="Places"></page-home>
-                    <saved-places judul="Saved Places"></saved-places>
-                    <div>anjing</div>
-                </iron-pages>
-            </app-header-layout>
+            <iron-pages attr-for-selected="judul" selected="{{halamanSekarang}}" role="main">
+                <places-list judul="Places"></places-list>
+                <saved-places judul="Saved Places"></saved-places>
+                <div>anjing</div>
+            </iron-pages>
         </app-drawer-layout>
     </template>
+
+
 
     <script>
         Polymer({
@@ -88,11 +48,20 @@
                 }
             },
 
+            ready: function() {
+                thisMainApp = this;
+            },
+
             onMenuSelect: function() {
                 var drawerLayout = document.querySelector('app-drawer-layout')
                 var drawer = document.querySelector('app-drawer')
                 if (drawerLayout.narrow) drawer.close()
             },
+
+            _swInstalled: function() {
+                console.log("SW Installed")
+            },
+            
         });
     </script>
 </dom-module>

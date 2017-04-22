@@ -3,10 +3,11 @@
   "main": "index.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "app-layout": "polymerelements/app-layout#^0.10.4",
+    "app-layout": "polymerelements/app-layout#^0.10.7",
     "iron-elements": "polymerelements/iron-elements#^1.0.10",
     "paper-elements": "polymerelements/paper-elements#^1.0.7",
-    "neon-animation": "polymerelements/neon-animation#^1.2.4"
+    "neon-animation": "polymerelements/neon-animation#^1.2.4",
+    "platinum-sw": "polymerelements/platinum-sw#^1.3.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

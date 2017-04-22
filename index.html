@@ -4,12 +4,13 @@
     <head>
         <title>vacindo</title>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#377bb7">
         <link rel="manifest" href="manifest.json">
         <!-- Tidak perlu pakai webcomponents karena target beta release-nya pengguna Android -->
         <!-- <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script> -->
-        <link rel="import" href="src/main-app.html">
-        <!-- <script src="cordova.js"></script> -->
+        <link rel="import" href="src/app-shell.html">
 
         <style>
             html {
@@ -26,6 +27,6 @@
     </head>
 
     <body>
-        <main-app></main-app>
+        <app-shell></app-shell>
     </body>
 </html>

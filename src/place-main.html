@@ -1,0 +1,112 @@
+<dom-module id="place-main">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :root {
+                display: block;
+                --app-primary-color: #377bb7;
+                --app-secondary-color: #000;
+                 --paper-icon-button-ink-color: white;
+            }
+
+            
+            app-header {
+                --app-header-background-front-layer: {
+                    background-image: url(../img/arborek.jpg);
+                    background-position: left center;
+                };
+                --app-header-background-rear-layer: {
+                    background-image: url(../img/arborek2.jpg);
+                    background-position: left center;
+                };
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+
+            app-toolbar#drawerToolbar {
+                background: var(--app-primary-color);
+                color: white;
+                height: 100px;
+            }
+
+            app-toolbar.tall {
+                height: 200px;
+            }
+
+            paper-icon-button {
+                margin-left: -8px;
+            }
+
+            paper-item iron-icon {
+                margin-right: 15px;
+            }
+
+            paper-material {
+                background-color: white;
+                margin: 16px;
+                padding: 16px;
+            }
+        </style>
+
+
+
+        <app-drawer-layout>
+            <app-drawer id="placeDrawer">
+                <app-toolbar id="drawerToolbar">
+                    <paper-icon-button on-tap="_tapBack" icon="arrow-back"></paper-icon-button>
+                    <div style="margin-left: 8px;">Back</div>
+                </app-toolbar>
+                <iron-selector selected="0" on-iron-select="onMenuSelect" role="navigation">
+                    <paper-item><iron-icon icon="info-outline"></iron-icon>Overview</paper-item>
+                    <paper-item><iron-icon icon="maps:flight"></iron-icon>How to get here</paper-item>
+                    <paper-item><iron-icon icon="maps:hotel"></iron-icon>Where to stay</paper-item>
+                </iron-selector>
+            </app-drawer>
+
+            <app-header-layout>
+                <app-header condenses reveals effects="waterfall resize-title blend-background parallax-background">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                        <div condensed-title style="margin-left: 10px;">Arborek Tourism Village</div>
+                    </app-toolbar>
+                    <app-toolbar class="tall">
+                        <h3 main-title>Arborek Tourism Village</h3>
+                    </app-toolbar>
+                </app-header>
+                <paper-material>
+                    <p>The village of Arborek is fast rising as a pioneer among the 18 beautiful villages in West Papua that have embarked on developing local regulations for community-based marine conservation, With recently claiming the 1st spot in 2015 Provincial village Competition for West Papua ,the village of Arborek has gained an outstanding reputation among both the local authority and international community. With the assistance of the national and local government, from research centers, and non-government organizations, the local people have succeeded in formulating local regulations.</p>
+                    <p>With a population of only 197, interaction with locals is a stones throw away from a number of Homestay options available on this island. Finding underwater beauty is not so difficult here. Along the Arborek pier, divers can simply plunge into the water and instantly find a most intriguing illumination of the glittering of a gorgonian fan just below the surface. People in Arborek are hospitable and very industrious, creating exceptional handicrafts from sea pandan leaves to make the most of their time each day. Arborek is fascinating both underwater and in the village.</p>
+                    <p>Known as the Arborek Tourism Village, the community is known for its handicraft in making hats and noken (string bags). Unlike most women in other villages who also give a hand to their husbands as fishermen, nearly all mothers in this village produce handicrafts for a living. Although they are convinced that catching lobsters and work in pearl agro-production are much more profitable, yet they feel that handicraft is more distinguished and more graceful work for women. This is a village worth visiting. Only one and half hours from Waisai, Raja Ampat’s capital, the village of Arborek is awaiting visitors from around the world.</p>
+                </paper-material>
+            </app-header-layout>
+        </app-drawer-layout>
+    </template>
+
+
+
+    <script>
+        Polymer({
+            is: 'place-main',
+            properties: {
+                halamanSekarang: {
+                    type: String,
+                    value: 'Places'
+                }
+            },
+
+            ready: function() {
+                thisPlaceMain = this;
+            },
+
+            onMenuSelect: function() {
+                var drawerLayout = document.querySelector('app-drawer-layout')
+                if (drawerLayout.narrow) thisPlaceMain.$.placeDrawer.close()
+            },
+
+            _tapBack: function() {
+                thisPlaceMain.$.placeDrawer.close();
+                thisAppShell.shellView = 0;
+            },
+            
+        });
+    </script>
+</dom-module>

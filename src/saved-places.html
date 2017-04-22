@@ -1,8 +1,9 @@
 <dom-module id="saved-places">
     <template>
         <style include="iron-flex iron-flex-alignment">
-            :host {
-                display: block;
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
             }
 
             paper-card {
@@ -11,19 +12,30 @@
             }
         </style>
 
-        <paper-card image="./img/pombo.jpg" heading="Pombo Island Atoll">
-            <div class="card-content">
-                Pombo is a small, uninhabited little island surrounded completely by a rocky, coral atoll, which is a circular shaped reef.
-                The far-out location of the island, coupled with its protected state only enhance the allure of this natural, virgin environment.
-            </div>
-            <div class="card-actions">
-                <paper-button>Save</paper-button>
-                <paper-button>Explore</paper-button>
-            </div>
-        </paper-card>
 
-        
+
+        <app-header-layout>
+            <app-header condenses reveals effects="waterfall">
+                <app-toolbar>
+                    <paper-icon-button on-tap="_tapMenu" icon="menu"></paper-icon-button>
+                    <div title style="margin-left: 10px;">Saved Places</div>
+                </app-toolbar>
+            </app-header>
+
+            <paper-card image="./img/pombo.jpg" heading="Pombo Island Atoll">
+                <div class="card-content">
+                    Pombo is a small, uninhabited little island surrounded completely by a rocky, coral atoll, which is a circular shaped reef.
+                    The far-out location of the island, coupled with its protected state only enhance the allure of this natural, virgin environment.
+                </div>
+                <div class="card-actions">
+                    <paper-button>Remove</paper-button>
+                    <paper-button>Explore</paper-button>
+                </div>
+            </paper-card>
+        </app-header-layout>
     </template>
+
+
 
     <script>
         Polymer({
@@ -32,6 +44,10 @@
             },
 
             ready: function() {   
+            },
+
+            _tapMenu: function() {
+                thisMainApp.$.appDrawer.open();
             }
         });
     </script>
